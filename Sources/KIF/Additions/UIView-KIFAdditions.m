@@ -14,7 +14,6 @@
 #import "UITouch-KIFAdditions.h"
 #import <objc/runtime.h>
 #import "UIEvent+KIFAdditions.h"
-#import "KIFUITestActor.h"
 #import <WebKit/WebKit.h>
 
 double KIFDegreesToRadians(double deg) {
@@ -608,7 +607,11 @@ NS_INLINE BOOL StringsMatchExceptLineBreaks(NSString *expected, NSString *actual
     }
     
     arrayOfPaths = newPaths;
-
+    __block NSTimeInterval touchTimestamp = [[NSProcessInfo processInfo] systemUptime];
+    void (^CFRunLoopRunInModeWithDragTouchDelay)(void) = ^ {
+        touchTimestamp += DRAG_TOUCH_DELAY;
+        CFRunLoopRunInMode(UIApplicationCurrentRunMode, DRAG_TOUCH_DELAY, false);
+    };
     for (NSUInteger pointIndex = 0; pointIndex < pointsInPath; pointIndex++) {
         // create initial touch event and send touch down event
         if (pointIndex == 0)
@@ -619,13 +622,12 @@ NS_INLINE BOOL StringsMatchExceptLineBreaks(NSString *expected, NSString *actual
                 // The starting point needs to be relative to the view receiving the UITouch event.
                 point = [self convertPoint:point fromView:self.window];
                 UITouch *touch = [[UITouch alloc] initAtPoint:point inView:self];
-                [touch setPhaseAndUpdateTimestamp:UITouchPhaseBegan];
+                [touch setPhase:UITouchPhaseBegan andUpdateTimestamp:touchTimestamp];
                 [touches addObject:touch];
             }
             UIEvent *eventDown = [self eventWithTouches:[NSArray arrayWithArray:touches]];
             [[UIApplication sharedApplication] kif_sendEvent:eventDown];
-            
-            CFRunLoopRunInMode(UIApplicationCurrentRunMode, DRAG_TOUCH_DELAY, false);
+            CFRunLoopRunInModeWithDragTouchDelay();
         }
         else
         {
@@ -636,17 +638,17 @@ NS_INLINE BOOL StringsMatchExceptLineBreaks(NSString *expected, NSString *actual
                 CGPoint point = [path[pointIndex] CGPointValue];
                 touch = touches[pathIndex];
                 [touch setLocationInWindow:point];
-                [touch setPhaseAndUpdateTimestamp:UITouchPhaseMoved];
+                [touch setPhase:UITouchPhaseMoved andUpdateTimestamp:touchTimestamp];
             }
             UIEvent *event = [self eventWithTouches:[NSArray arrayWithArray:touches]];
             [[UIApplication sharedApplication] kif_sendEvent:event];
 
-            CFRunLoopRunInMode(UIApplicationCurrentRunMode, DRAG_TOUCH_DELAY, false);
+            CFRunLoopRunInModeWithDragTouchDelay();
 
             // The last point needs to also send a phase ended touch.
             if (pointIndex == pointsInPath - 1) {
                 for (UITouch * touch in touches) {
-                    [touch setPhaseAndUpdateTimestamp:UITouchPhaseEnded];
+                    [touch setPhase:UITouchPhaseEnded andUpdateTimestamp:touchTimestamp];
                     UIEvent *eventUp = [self eventWithTouch:touch];
                     [[UIApplication sharedApplication] kif_sendEvent:eventUp];
                     
@@ -662,7 +664,7 @@ NS_INLINE BOOL StringsMatchExceptLineBreaks(NSString *expected, NSString *actual
     }
 
     while (UIApplicationCurrentRunMode != kCFRunLoopDefaultMode) {
-        CFRunLoopRunInMode(UIApplicationCurrentRunMode, 0.1, false);
+        CFRunLoopRunInModeWithDragTouchDelay();
     }
 }
 
