@@ -17,5 +17,6 @@
 
 - (void)setLocationInWindow:(CGPoint)location;
 - (void)setPhaseAndUpdateTimestamp:(UITouchPhase)phase;
+- (void)setPhase:(UITouchPhase)phase andUpdateTimestamp: (NSTimeInterval) timestamp;
 
 @end
