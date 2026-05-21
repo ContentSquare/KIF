@@ -266,14 +266,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2229D53D25BEF47D0093296C /* IdentifierTests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = IdentifierTests;
-			path = Sources/KIF/IdentifierTests;
-			sourceTree = "<group>";
-		};
 		2229D54025BEF47D0093296C /* Visualizer */ = {
 			isa = PBXGroup;
 			children = (
@@ -420,7 +412,6 @@
 				2229D54725BEF47D0093296C /* Additions */,
 				2229D59325BEF47D0093296C /* ApplePrivateAPIs */,
 				2229D57325BEF47D0093296C /* Classes */,
-				2229D53D25BEF47D0093296C /* IdentifierTests */,
 				2229D54025BEF47D0093296C /* Visualizer */,
 			);
 			name = KIF;
