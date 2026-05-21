@@ -29,7 +29,6 @@
 		2229D5A825BEF47D0093296C /* CAAnimation+KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2229D55325BEF47D0093296C /* CAAnimation+KIFAdditions.m */; };
 		2229D5A925BEF47D0093296C /* NSFileManager-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2229D55425BEF47D0093296C /* NSFileManager-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2229D5AA25BEF47D0093296C /* UIView-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2229D55525BEF47D0093296C /* UIView-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2229D5AB25BEF47D0093296C /* NSError-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2229D55625BEF47D0093296C /* NSError-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2229D5AC25BEF47D0093296C /* UIEvent+KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2229D55725BEF47D0093296C /* UIEvent+KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2229D5AD25BEF47D0093296C /* UIDatePicker+KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2229D55825BEF47D0093296C /* UIDatePicker+KIFAdditions.m */; };
 		2229D5AE25BEF47D0093296C /* CALayer-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2229D55925BEF47D0093296C /* CALayer-KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -49,7 +48,6 @@
 		2229D5BE25BEF47D0093296C /* UITableView-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2229D56925BEF47D0093296C /* UITableView-KIFAdditions.m */; };
 		2229D5BF25BEF47D0093296C /* UIView-Debugging.h in Headers */ = {isa = PBXBuildFile; fileRef = 2229D56A25BEF47D0093296C /* UIView-Debugging.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2229D5C025BEF47D0093296C /* UIEvent+KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2229D56B25BEF47D0093296C /* UIEvent+KIFAdditions.m */; };
-		2229D5C125BEF47D0093296C /* NSError-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2229D56C25BEF47D0093296C /* NSError-KIFAdditions.m */; };
 		2229D5C225BEF47D0093296C /* LoadableCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 2229D56D25BEF47D0093296C /* LoadableCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2229D5C425BEF47D0093296C /* NSPredicate+KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2229D56F25BEF47D0093296C /* NSPredicate+KIFAdditions.m */; };
 		2229D5C625BEF47D0093296C /* UIDatePicker+KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2229D57125BEF47D0093296C /* UIDatePicker+KIFAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -70,6 +68,10 @@
 		2229D5E725BEF47D0093296C /* UIDatePicker+KIFPrivateAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 2229D59425BEF47D0093296C /* UIDatePicker+KIFPrivateAPI.h */; };
 		84D293AF1A2C867300C10944 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D293AE1A2C867300C10944 /* CoreLocation.framework */; };
 		84D293B81A2C8DF700C10944 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D293B71A2C8DF700C10944 /* AddressBookUI.framework */; };
+		85955AA2274E72BE003B647B /* NSError-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 85955AA0274E72BE003B647B /* NSError-KIFAdditions.h */; };
+		85955AA3274E72BE003B647B /* NSError-KIFAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 85955AA0274E72BE003B647B /* NSError-KIFAdditions.h */; };
+		85955AA4274E72BE003B647B /* NSError-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 85955AA1274E72BE003B647B /* NSError-KIFAdditions.m */; };
+		85955AA5274E72BE003B647B /* NSError-KIFAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 85955AA1274E72BE003B647B /* NSError-KIFAdditions.m */; };
 		85DB94721C5A5D430025F83E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85DB94711C5A5D430025F83E /* QuartzCore.framework */; };
 		85DB94731C5A5FD50025F83E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85DB94711C5A5D430025F83E /* QuartzCore.framework */; };
 		85DB94741C5A5FE10025F83E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85DB94711C5A5D430025F83E /* QuartzCore.framework */; };
@@ -140,7 +142,6 @@
 		2229D55325BEF47D0093296C /* CAAnimation+KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+KIFAdditions.m"; sourceTree = "<group>"; };
 		2229D55425BEF47D0093296C /* NSFileManager-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager-KIFAdditions.h"; sourceTree = "<group>"; };
 		2229D55525BEF47D0093296C /* UIView-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView-KIFAdditions.h"; sourceTree = "<group>"; };
-		2229D55625BEF47D0093296C /* NSError-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError-KIFAdditions.h"; sourceTree = "<group>"; };
 		2229D55725BEF47D0093296C /* UIEvent+KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIEvent+KIFAdditions.h"; sourceTree = "<group>"; };
 		2229D55825BEF47D0093296C /* UIDatePicker+KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDatePicker+KIFAdditions.m"; sourceTree = "<group>"; };
 		2229D55925BEF47D0093296C /* CALayer-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer-KIFAdditions.h"; sourceTree = "<group>"; };
@@ -160,7 +161,6 @@
 		2229D56925BEF47D0093296C /* UITableView-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView-KIFAdditions.m"; sourceTree = "<group>"; };
 		2229D56A25BEF47D0093296C /* UIView-Debugging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView-Debugging.h"; sourceTree = "<group>"; };
 		2229D56B25BEF47D0093296C /* UIEvent+KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIEvent+KIFAdditions.m"; sourceTree = "<group>"; };
-		2229D56C25BEF47D0093296C /* NSError-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError-KIFAdditions.m"; sourceTree = "<group>"; };
 		2229D56D25BEF47D0093296C /* LoadableCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadableCategory.h; sourceTree = "<group>"; };
 		2229D56F25BEF47D0093296C /* NSPredicate+KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPredicate+KIFAdditions.m"; sourceTree = "<group>"; };
 		2229D57125BEF47D0093296C /* UIDatePicker+KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDatePicker+KIFAdditions.h"; sourceTree = "<group>"; };
@@ -184,6 +184,8 @@
 		255C04112F68D9690023E400 /* TestHost-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestHost-Bridging-Header.h"; sourceTree = "<group>"; };
 		84D293AE1A2C867300C10944 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		84D293B71A2C8DF700C10944 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		85955AA0274E72BE003B647B /* NSError-KIFAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError-KIFAdditions.h"; sourceTree = "<group>"; };
+		85955AA1274E72BE003B647B /* NSError-KIFAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError-KIFAdditions.m"; sourceTree = "<group>"; };
 		85DB94711C5A5D430025F83E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8E654FCC29DA2FE7007F7811 /* UIWindow+KIFSwizzle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIWindow+KIFSwizzle.h"; sourceTree = "<group>"; };
 		8E654FCD29DA2FE7007F7811 /* UIWindow+KIFSwizzle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+KIFSwizzle.m"; sourceTree = "<group>"; };
@@ -283,6 +285,8 @@
 		2229D54725BEF47D0093296C /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				85955AA0274E72BE003B647B /* NSError-KIFAdditions.h */,
+				85955AA1274E72BE003B647B /* NSError-KIFAdditions.m */,
 				2229D56725BEF47D0093296C /* CAAnimation+KIFAdditions.h */,
 				2229D55325BEF47D0093296C /* CAAnimation+KIFAdditions.m */,
 				2229D55925BEF47D0093296C /* CALayer-KIFAdditions.h */,
