@@ -49,6 +49,13 @@ CF_EXPORT SInt32 KIFRunLoopRunInModeRelativeToAnimationSpeed(CFStringRef mode, C
  @param matchBlock  A block to be performed on each element to see if it passes.
  */
 - (UIAccessibilityElement *)accessibilityElementMatchingBlock:(BOOL(^)(UIAccessibilityElement *))matchBlock;
+/*!
+ @abstract Finds an accessibility element where @c matchBlock returns @c YES, across all windows in the application starting at the fronmost window.
+ @discussion This method should be used if @c accessibilityElementWithLabel:accessibilityValue:traits: does not meet your requirements.  For example, if you are searching for an element that begins with a pattern or if of a certain view type.
+ @param matchBlock  A block to be performed on each element to see if it passes.
+ @param scrollDisabled  Disable scroll performing the search only in the current visible frame.
+ */
+- (UIAccessibilityElement *)accessibilityElementMatchingBlock:(BOOL(^)(UIAccessibilityElement *))matchBlock disableScroll:(BOOL)scrollDisabled;
 
 /*!
  @returns The window containing the keyboard or @c nil if the keyboard is not visible.
@@ -74,6 +81,12 @@ CF_EXPORT SInt32 KIFRunLoopRunInModeRelativeToAnimationSpeed(CFStringRef mode, C
  @returns All windows in the application, including the key window even if it does not appear in @c -windows.
  */
 - (NSArray *)windowsWithKeyWindow;
+
+/*!
+ @discussion A replacement for the  @c keyWindow property, which was deprecated in iOS 13
+ @returns The key window, found by iterating @c UIApplication's @c connectedScenes.
+ */
+- (UIWindow *)windowSceneKeyWindow;
 
 /// @discussion The first responders are ordered in the reverse order of @c -windowsWithKeyWindow
 /// to return in order of nearest visually.

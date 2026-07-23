@@ -63,8 +63,13 @@ static const void *KIFRunLoopModesKey = &KIFRunLoopModesKey;
 
 - (UIAccessibilityElement *)accessibilityElementMatchingBlock:(BOOL(^)(UIAccessibilityElement *))matchBlock;
 {
+    return [self accessibilityElementMatchingBlock:matchBlock disableScroll:NO];
+}
+
+- (UIAccessibilityElement *)accessibilityElementMatchingBlock:(BOOL(^)(UIAccessibilityElement *))matchBlock disableScroll:(BOOL)scrollDisabled;
+{
     for (UIWindow *window in [self.windowsWithKeyWindow reverseObjectEnumerator]) {
-        UIAccessibilityElement *element = [window accessibilityElementMatchingBlock:matchBlock];
+        UIAccessibilityElement *element = [window accessibilityElementMatchingBlock:matchBlock disableScroll:scrollDisabled];
         if (element) {
             return element;
         }
@@ -129,25 +134,42 @@ static const void *KIFRunLoopModesKey = &KIFRunLoopModesKey;
 
 - (NSArray *)windowsWithKeyWindow
 {
-    NSMutableArray *windows = self.windows.mutableCopy;
-    UIWindow *keyWindow = self.keyWindow;
-    if (keyWindow && ![windows containsObject:keyWindow]) {
-        [windows addObject:keyWindow];
+    NSMutableArray *windows = [NSMutableArray array];
+    
+    for (UIWindowScene *scene in UIApplication.sharedApplication.connectedScenes) {
+        if ([scene isKindOfClass:[UIWindowScene class]]) {
+            [windows addObjectsFromArray:scene.windows];
+        }
     }
+    
     return windows;
+}
+
+- (UIWindow *)windowSceneKeyWindow
+{
+    for (UIWindow *window in [self windowsWithKeyWindow]) {
+        if (window.isKeyWindow) {
+            return window;
+        }
+    }
+    
+    return nil;
 }
 
 - (float)animationSpeed
 {
-    if (!self.keyWindow) {
+    UIWindow *keyWindow = [self windowSceneKeyWindow];
+    if (!keyWindow) {
         return 1.0f;
     }
-    return self.keyWindow.layer.speed;
+    return keyWindow.layer.speed;
 }
 
 - (void)setAnimationSpeed:(float)animationSpeed
 {
-    self.keyWindow.layer.speed = animationSpeed;
+    for (UIWindow *window in [self windowsWithKeyWindow]) {
+        window.layer.speed = animationSpeed;
+    }
 }
 
 #pragma mark - Screenshotting
@@ -176,13 +198,21 @@ static const void *KIFRunLoopModesKey = &KIFRunLoopModesKey;
         }
         return NO;
     }
-    
+
+    UIWindow *keyboardWindow = [self keyboardWindow];
+
     UIGraphicsBeginImageContextWithOptions([[windows objectAtIndex:0] bounds].size, YES, 0);
     for (UIWindow *window in windows) {
 		//avoid https://github.com/kif-framework/KIF/issues/679
 		if (window.hidden) {
 			continue;
 		}
+
+        if (@available(iOS 17.0, *)) {
+            if (window == keyboardWindow) {
+                continue;
+            }
+        }
 
         if ([window respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
             [window drawViewHierarchyInRect:window.bounds afterScreenUpdates:YES];
